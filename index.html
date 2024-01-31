@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Changer</title>
+    <style>
+      body,html{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      .formBody{
+        height: 50vh;
+        width: 40%;
+        margin: auto;
+        text-align: center;
+        
+      }
+      .btn{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid gray;
+        border-radius: 100%;
+        cursor: pointer;
+      }
+      h1{
+        color: blueviolet;
+      }
+      #black{
+        background-color: black;
+      }
+      #white{
+        background-color: white;
+      }
+      #aqua{
+        background-color: rgb(115, 236, 236);
+      }
+      #purple{
+        background-color: rgb(246, 96, 246);
+      }
+      #paleturquoise{
+        background-color: paleturquoise;
+      }
+      #green{
+        background-color: rgb(116, 236, 116);
+      }
+      .btn-col{
+        margin-top: 20px;
+        margin-right: 40px;
+        text-align: right;
+      }
+      .formInnerbody{
+         margin: 30px;
+         height: 50vh;
+         width: 40vw;
+         margin-top: 50px;
+         border: 2px solid rgb(112, 107, 107);
+         border-radius:6px;
+         background-color: white;
+      }
+      #submitbtn{
+        width: 20%;
+        height: 5vh;
+        background-color: blueviolet;
+        border-radius: 5px;
+      }
+      .forminput{
+        width: 20vw;
+        height: 5vh;
+        border-radius: 4px;
+      }
+      .error{
+        color: red;
+        margin: auto;
+        margin-top: 0;
+        text-align: initial;
+        padding-left: 9.7vw;
+      }
+      @media (max-width:900px){
+        .error{
+        padding-left: 25px;
+      }
+      
+      .btn-col{
+        margin-right: 20px;
+      }
+      .formInnerbody{
+         margin: 30px;
+         height: 50vh;
+         width: 80vw;
+         margin-top: 50px;
+         border: 2px solid rgb(112, 107, 107);
+         border-radius:6px;
+      }
+      .formBody{
+        height: 40vh;
+        width: 95%;
+      }
+      .forminput{
+          width: 80%;
+          height: 5.5vh;
+      }
+      #submitbtn{
+        width: 40%;
+        height: 5vh;
+      }
+      }
+    </style>
+</head>
+<body>
+    <div class="btn-col">
+        <span class="btn" id="black" onclick="bgcolor('#000000')"></span>
+        <span class="btn" id="white" onclick="bgcolor('#F6F6F6')"></span>
+        <span class="btn" id="aqua" onclick="bgcolor('#26C6DA')"></span>
+        <span class="btn" id="purple" onclick="bgcolor('#D35781')"></span>
+        <span class="btn" id="paleturquoise" onclick="bgcolor('#63BDC8')"></span>
+        <span class="btn" id="green" onclick="bgcolor('#9CCC65')"></span>
+    </div><br>
+   <div class="formBody">
+    <div class="formInnerbody">
+      <form action="" onsubmit="return validateForm()">
+        <h1>Login</h1>
+        <input type="text" placeholder="Username" id="username" class="forminput"><br>
+        <p class="error" id="userError"></p><br><br>
+        <input type="password" placeholder="Password" id="password" class="forminput"><br>
+        <p class="error" id="passError"></p><br><br>
+        <input type="submit" id="submitbtn">
+      </form>
+    </div>
+   </div>
+    <script>
+       let username= document.getElementById("username");
+       let password=document.getElementById("password");
+       let flag=1;
+
+       function validateForm()
+       {
+          if(username.value == ""){
+             document.getElementById("userError").innerHTML="Username is empty";
+             flag=0;
+          }
+          else if(username.value.length<6){
+          document.getElementById("userError").innerHTML="Username require minimum 6 character";
+          flag=0;
+          }
+          else{
+          document.getElementById("userError").innerHTML="";
+          flag=1;
+          }
+          if(password.value == ""){
+             document.getElementById("passError").innerHTML="Password is empty";
+             flag=0;
+          }
+          else{
+          document.getElementById("passError").innerHTML="";
+        
+          }
+        if(flag==1)
+           return true;
+        else  
+           return false;
+          
+       }
+    </script>
+   <script>
+       function bgcolor(color){
+        document.body.style.backgroundColor = color;
+        let text =document.getElementsByClassName("text");
+        if(color == '#000000')
+             for(elm of text)
+            {
+                elm.style.color="white";
+            }
+            else{
+                for(elm of text)
+            {
+                elm.style.color="black";
+            }
+            }
+       }
+   </script> 
+</body>
+</html>
